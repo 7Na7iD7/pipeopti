@@ -424,7 +424,6 @@ class _PipeLayoutScreenState extends State<PipeLayoutScreen>
       backgroundColor: theme.colorScheme.surface,
       elevation: 0,
       actions: [
-        // شرط _result != null برای دکمه‌های اکشن حفظ می‌شود زیرا نیاز به داده دارند
         if (_appState == AppState.calculated && _result != null) ...[
           IconButton(
             icon: Icon(_isGraphFullScreen ? Icons.fullscreen_exit : Icons.fullscreen),
@@ -453,7 +452,6 @@ class _PipeLayoutScreenState extends State<PipeLayoutScreen>
   }
 
   Widget _buildFullScreenGraph(ThemeData theme) {
-    // _result null check is already done before calling this in build method
     return Scaffold(
       backgroundColor: theme.colorScheme.background,
       appBar: AppBar(
@@ -500,14 +498,13 @@ class _PipeLayoutScreenState extends State<PipeLayoutScreen>
               return FadeTransition(opacity: animation, child: child);
             },
             child: _appState == AppState.loading
-                ? _buildLoadingView(theme) // اگر لودینگ است، فقط نمای لودینگ را نشان بده
-                : Column( // در غیر این صورت، همیشه تب‌ها و محتوای آنها را نشان بده
-              key: ValueKey(_selectedTab), // برای انیمیشن صحیح هنگام تغییر تب
+                ? _buildLoadingView(theme) 
+                : Column( 
+              key: ValueKey(_selectedTab), 
               children: [
-                // نمایش سطر MetricCard ها فقط در تب Layout و بعد از محاسبه
                 if (_selectedTab == 0 && _appState == AppState.calculated && _result != null)
                   _buildMetricsRow(theme),
-                Expanded(child: _getTabContent(isDarkMode)), // مستقیماً محتوای تب را نمایش بده
+                Expanded(child: _getTabContent(isDarkMode)),
               ],
             ),
           ),
@@ -728,7 +725,6 @@ class _PipeLayoutScreenState extends State<PipeLayoutScreen>
   }
 
   Widget _getTabContent(bool isDarkMode) {
-    // این متد فقط انتخاب کننده تب است، منطق نمایش داده یا پیام خالی در خود متدهای هر تب باشد.
     switch (_selectedTab) {
       case 0:
         return _buildLayoutTab(isDarkMode);
