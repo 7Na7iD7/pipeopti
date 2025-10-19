@@ -57,7 +57,6 @@ class _EnhancedButtonState extends State<EnhancedButton> with SingleTickerProvid
   }
 
   void _simulateProgress() {
-    // تنها زمانی اجرا می‌شود که showProgressOnTap فعال باشد
     if (widget.showProgressOnTap) {
       setState(() {
         _isLoading = true;
@@ -95,12 +94,12 @@ class _EnhancedButtonState extends State<EnhancedButton> with SingleTickerProvid
 
   void _handleTapDown(TapDownDetails details) {
     setState(() => _isButtonPressed = true);
-    HapticFeedback.lightImpact(); // بازخورد لمسی خفیف
+    HapticFeedback.lightImpact();
   }
 
   void _handleTapUp(TapUpDetails details) {
     setState(() => _isButtonPressed = false);
-    HapticFeedback.mediumImpact(); // بازخورد لمسی متوسط
+    HapticFeedback.mediumImpact();
     _simulateProgress();
   }
 
@@ -114,7 +113,6 @@ class _EnhancedButtonState extends State<EnhancedButton> with SingleTickerProvid
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final textTheme = Theme.of(context).textTheme;
 
-    // رنگ‌بندی بر اساس تم و رنگ‌های سفارشی
     final primaryColor = widget.primaryColor ??
         (isDarkMode ? const Color(0xFF0CC7B4) : const Color(0xFF1E40AF));
     final secondaryColor = widget.secondaryColor ??
@@ -130,7 +128,6 @@ class _EnhancedButtonState extends State<EnhancedButton> with SingleTickerProvid
         curve: Curves.easeInOut,
         builder: (context, pulseValue, child) {
           return Transform.scale(
-            // اثر فشرده شدن با فشار دکمه
             scale: _isButtonPressed ? 0.95 : pulseValue,
             child: Container(
               width: size.width * 0.85,
@@ -146,7 +143,6 @@ class _EnhancedButtonState extends State<EnhancedButton> with SingleTickerProvid
                   end: Alignment.bottomRight,
                 ),
                 boxShadow: [
-                  // سایه اصلی
                   BoxShadow(
                     color: primaryColor.withOpacity(0.5),
                     blurRadius: _isButtonPressed ? 10 : 20,
@@ -155,7 +151,6 @@ class _EnhancedButtonState extends State<EnhancedButton> with SingleTickerProvid
                         ? const Offset(0, 2)
                         : const Offset(0, 5),
                   ),
-                  // سایه درونی برای عمق بیشتر
                   BoxShadow(
                     color: Colors.black.withOpacity(0.1),
                     blurRadius: 1,
@@ -166,7 +161,6 @@ class _EnhancedButtonState extends State<EnhancedButton> with SingleTickerProvid
               ),
               child: Stack(
                 children: [
-                  // افکت موج (ریپل) بر روی دکمه
                   if (!_isButtonPressed)
                     Positioned.fill(
                       child: ClipRRect(
@@ -194,7 +188,6 @@ class _EnhancedButtonState extends State<EnhancedButton> with SingleTickerProvid
                       ),
                     ),
 
-                  // افکت موج دوم (محو شونده از مرکز)
                   if (!_isButtonPressed)
                     Positioned.fill(
                       child: ClipRRect(
@@ -202,7 +195,6 @@ class _EnhancedButtonState extends State<EnhancedButton> with SingleTickerProvid
                         child: AnimatedBuilder(
                           animation: _waveController,
                           builder: (context, child) {
-                            // این موج با فاز مخالف حرکت می‌کند
                             final phase = (_waveController.value + 0.5) % 1.0;
                             final waveValue = Curves.easeInOut.transform(phase) * 1.3 + 0.7;
 
@@ -226,7 +218,6 @@ class _EnhancedButtonState extends State<EnhancedButton> with SingleTickerProvid
                       ),
                     ),
 
-                  // نشانگر پیشرفت دایره‌ای
                   if (_isLoading)
                     Positioned.fill(
                       child: CustomPaint(
@@ -238,7 +229,6 @@ class _EnhancedButtonState extends State<EnhancedButton> with SingleTickerProvid
                       ),
                     ),
 
-                  // محتوای دکمه
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -286,7 +276,6 @@ class _EnhancedButtonState extends State<EnhancedButton> with SingleTickerProvid
   }
 }
 
-/// کامپوننت کمکی برای نمایش پیشرفت دایره‌ای
 class ProgressArcPainter extends CustomPainter {
   final double progress;
   final Color color;
@@ -310,7 +299,6 @@ class ProgressArcPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
-    // کشیدن دایره نامحسوس پشت زمینه
     canvas.drawCircle(
         center,
         radius,
@@ -320,11 +308,10 @@ class ProgressArcPainter extends CustomPainter {
           ..style = PaintingStyle.stroke
     );
 
-    // کشیدن کمان پیشرفت
     canvas.drawArc(
       rect,
-      -pi / 2, // شروع از بالا
-      2 * pi * progress, // زاویه بر اساس پیشرفت
+      -pi / 2,
+      2 * pi * progress,
       false,
       paint,
     );
@@ -335,7 +322,6 @@ class ProgressArcPainter extends CustomPainter {
       oldDelegate.progress != progress;
 }
 
-// دکمه ثانویه با طراحی ساده‌تر
 class SecondaryButton extends StatefulWidget {
   final String text;
   final VoidCallback onPressed;
@@ -365,7 +351,6 @@ class _SecondaryButtonState extends State<SecondaryButton> {
     final textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
 
-    // رنگ‌های پیش‌فرض
     final textColor = widget.textColor ??
         (isDarkMode ? Colors.white.withOpacity(0.9) : Colors.white.withOpacity(0.9));
     final borderColor = widget.borderColor ??
@@ -431,7 +416,6 @@ class _SecondaryButtonState extends State<SecondaryButton> {
   }
 }
 
-// کلاس اصلی صفحه خوش‌آمدگویی
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
@@ -445,7 +429,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
   late Animation<Offset> _slideAnimation;
   bool _isButtonPressed = false;
 
-  // کلید برای دکمه - برای انیمیشن انتقال صفحه
   final GlobalKey _buttonKey = GlobalKey();
 
   @override
@@ -483,12 +466,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
   }
 
   void _navigateToLogin() {
-    // استفاده از انیمیشن انتقال صفحه
     Navigator.pushReplacementNamed(context, '/login');
   }
 
   void _navigateToAbout() {
-    // انتقال به صفحه درباره ما
     Navigator.pushNamed(context, '/about');
   }
 
@@ -499,7 +480,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final size = MediaQuery.of(context).size;
 
-    // تعریف رنگ‌های اصلی با توجه به حالت تاریک/روشن
     final primaryColor = isDarkMode ? const Color(0xFF0CC7B4) : const Color(0xFF1E40AF);
     final secondaryColor = isDarkMode ? Colors.tealAccent : Colors.blueAccent;
     final bgGradientColors = isDarkMode
@@ -507,7 +487,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
         : [const Color(0xFF3B82F6), const Color(0xFF2563EB), const Color(0xFF10B981)];
 
     return Directionality(
-      // تنظیم RTL برای پشتیبانی بهتر از زبان فارسی
       textDirection: TextDirection.rtl,
       child: Scaffold(
         body: Stack(
@@ -540,7 +519,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                         'assets/animations/welcome_pipes.json',
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
-                        // بهینه‌سازی برای جلوگیری از لود غیرضروری
                         frameRate: FrameRate(30),
                         repeat: true,
                       ),
@@ -735,19 +713,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                       ),
 
                       const SizedBox(height: 40),
-                      // استفاده از دکمه پیشرفته
                       EnhancedButton(
                         key: _buttonKey,
                         text: 'شروع کنید',
                         icon: Icons.arrow_back_ios_rounded,
                         primaryColor: primaryColor,
                         secondaryColor: secondaryColor,
-                        showProgressOnTap: true, // نمایش نشانگر پیشرفت
-                        routeName: '/login', // تعیین مسیر مستقیم برای ناوبری
+                        showProgressOnTap: true,
+                        routeName: '/login',
                         onPressed: _navigateToLogin,
                       ),
 
-                      // دکمه جدید - درباره ما
                       const SizedBox(height: 15),
                       SecondaryButton(
                         text: 'درباره ما',
@@ -755,7 +731,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                         onPressed: _navigateToAbout,
                       ),
 
-                      // کپی‌رایت یا متن اضافه در پایین صفحه
                       Padding(
                         padding: EdgeInsets.only(top: size.height * 0.05),
                         child: FadeTransition(
