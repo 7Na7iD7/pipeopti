@@ -1,7 +1,3 @@
-<!-- =================================================================== -->
-<!-- 🚀 SMART PIPE OPTIMIZATION - PROFESSIONAL README -->
-<!-- =================================================================== -->
-
 <div align="center">
 
 ![Smart Pipe Optimization Banner](assets/smart_pipe_banner.png)
