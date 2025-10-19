@@ -1,7 +1,5 @@
 <div align="center">
 
-![Smart Pipe Optimization Banner](assets/smart_pipe_banner.png)
-
 # 💧 Smart Pipe Optimization
 
 **A next-generation Flutter app that designs the most efficient pipe layout using Kruskal’s MST algorithm.**
