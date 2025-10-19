@@ -1,115 +1,202 @@
-# Smart Pipe Optimization
+<!-- =================================================================== -->
 
-A sophisticated Flutter application designed to calculate and visualize the most efficient pipe layout in a multi-story building using Kruskal's algorithm to determine the Minimum Spanning Tree (MST).
+<!-- 🚀 SMART PIPE OPTIMIZATION - PROFESSIONAL README -->
 
------
+<!-- =================================================================== -->
 
-## 📋 Table of Contents
+<p align="center">
+<img src="assets/smart_pipe_banner.png" alt="Smart Pipe Optimization Banner" width="100%">
+</p>
 
-  * [About The Project](#about-the-project)
-  * [Screenshots](#screenshots)
-  * [Key Features](#key-features)
-  * [Core Algorithm: Kruskal's MST](#core-algorithm-kruskals-mst)
-  * [Technology Stack](#technology-stack)
-  * [Project Structure](#project-structure)
-  * [Getting Started](#getting-started)
-  * [License](#license)
+<h1 align="center">💧 Smart Pipe Optimization</h1>
+<p align="center">
+<em>A next-generation Flutter app that designs the most efficient pipe layout using Kruskal’s MST algorithm.</em>
+</p>
 
-## 📖 About The Project
+<p align="center">
+<a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Framework-Flutter-blue?logo=flutter&logoColor=white" /></a>
+<a href="https://dart.dev/"><img src="https://img.shields.io/badge/Language-Dart-0175C2?logo=dart&logoColor=white" /></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" /></a>
+<a href="#"><img src="https://img.shields.io/badge/Version-1.0.0-purple" /></a>
+</p>
 
-This project provides a powerful tool for engineers and planners to optimize infrastructure costs. By inputting the number of floors and rooms in a building, the application generates a random spatial layout and then calculates the shortest possible total pipe length required to connect every room.
+🧭 Table of Contents
 
-The result is an interactive, visually rich graph that allows users to explore the optimal network, view detailed connection data, and analyze the layout's efficiency through dynamic charts.
+📖 About The Project
 
-## 📸 Screenshots
+📸 Screenshots
 
-*(Replace these placeholders with actual screenshots of your running application.)*
+✨ Key Features
 
-| Welcome & Login | Main Layout & Visualization | Data & Analytics |
-| :---: | :---: | :---: |
-| ** | *[GIF of the Interactive Graph Visualization]* | ** |
-| A modern, animated entry point to the application. | The core interactive canvas where the optimal pipe network is displayed. | Detailed views of connection data and performance charts. |
+🧠 Core Algorithm: Kruskal's MST
 
-## ✨ Key Features
+🛠️ Technology Stack
 
-  * **Dynamic Layout Generation**: Automatically creates a randomized, multi-floor building layout based on user-defined parameters (floors and rooms).
-  * **Optimal Path Calculation**: Implements **Kruskal's algorithm** to find the Minimum Spanning Tree (MST), guaranteeing the most cost-effective pipe network.
-  * **Interactive 2D Visualization**: A custom-painted, zoomable, and pannable canvas displays rooms (nodes) and pipes (edges). Users can tap on rooms to see details and adjust properties.
-  * **Rich Data Analytics**: The "Analytics" tab provides insightful charts, including:
-      * Distribution of pipe lengths.
-      * Number of pipe connections originating from each floor.
-  * **Detailed Connection List**: The "Data" tab presents a scrollable list of every required connection, showing the two rooms it connects and the distance between them.
-  * **Modern UI/UX**:
-      * Fluid animations and transitions throughout the app.
-      * Beautifully designed Welcome and Login screens with Lottie animations.
-      * Support for both **Light and Dark themes**.
-  * **Advanced Filtering & Search**: A side-panel allows users to filter rooms by floor or search for specific rooms, which are then highlighted on the main graph.
+📂 Project Structure
 
-## 🧠 Core Algorithm: Kruskal's MST
+🚀 Getting Started
 
-The heart of this application is **Kruskal's algorithm for finding a Minimum Spanning Tree (MST)**.
+📘 Developer Notes
 
-1.  **Nodes & Edges**: Each `Room` in the building is treated as a **node (or vertex)** in a graph. A potential pipe connection between any two rooms is an **edge**.
-2.  **Edge Weight**: The "weight" of each edge is the calculated distance between two rooms. A key innovation in this model is the `distanceTo` function, which adds a significant **penalty for connections between different floors**. This realistically simulates the higher cost and complexity of vertical piping.
-3.  **The Algorithm**:
-      * All possible connections (edges) are generated and sorted by their distance (weight) in ascending order.
-      * The algorithm iterates through the sorted edges.
-      * For each edge, it checks if adding it to the network would form a cycle. It uses a **Disjoint Set Union (DSU)** data structure for this, which is highly efficient.
-      * If no cycle is formed, the edge is added to our final network (the MST).
-      * This process continues until there are `(number of rooms - 1)` edges, ensuring every room is connected.
-4.  **Result**: The final set of connections forms the network with the absolute minimum total pipe length.
+📜 License
 
-## 🛠️ Technology Stack
+📖 About The Project
 
-This project is built with Flutter and leverages several high-quality packages:
+💡 Smart Pipe Optimization provides engineers with a visual and algorithmic tool
 
-  * **Framework**: [Flutter](https://flutter.dev/)
-  * **Language**: [Dart](https://dart.dev/)
-  * **State Management**: `StatefulWidget` & `setState` (with a clean, service-oriented architecture)
-  * **Charting**: [`fl_chart`](https://pub.dev/packages/fl_chart) - For the analytics dashboards.
-  * **Animations**:
-      * [`lottie`](https://pub.dev/packages/lottie) - For complex JSON-based animations on the welcome/login screens.
-      * [`flutter_animate`](https://pub.dev/packages/flutter_animate) - For fluent and simple UI animations.
-  * **UI Helpers**:
-      * [`google_fonts`](https://pub.dev/packages/google_fonts) - For custom typography.
-      * [`flutter_spinkit`](https://pub.dev/packages/flutter_spinkit) - For elegant loading indicators.
+to design the most efficient water or gas piping network across multiple floors.
 
-## 📂 Project Structure
+It simulates realistic layouts, calculates optimal paths, and visualizes the network interactively.
 
-The codebase is organized logically to separate concerns, making it clean and maintainable.
+🧩 Key Goals
 
-| File/Folder | Description |
-| :--- | :--- |
-| `main.dart` | The main entry point of the app, configures themes and routes. |
-| `kruskal.dart` | Contains the core logic: classes for `Room`, `Connection`, `Building`, and the implementation of Kruskal's algorithm with a `DisjointSet`. |
-| `pipe_layout_screen.dart` | The main screen of the application, managing state, user input, and displaying the three main tabs (Layout, Data, Analytics). |
-| `modern_graph_visualization.dart`| The interactive widget that hosts the `CustomPainter` for the graph. Manages zooming, panning, and user interaction. |
-| `room_and_connection_painter.dart`| The `CustomPainter` class responsible for drawing all rooms, connections, labels, and animations on the canvas. |
-| `welcome_screen.dart` | A visually appealing welcome screen with custom animations. |
-| `modern_login_screen.dart` | An animated, modern login screen with particle effects and a frosted glass UI. |
-| `*.dart` (in root) | Reusable UI components like `MetricCard`, `ConnectionItem`, and helper `extensions`. |
+Reduce material and construction costs.
 
-## 🚀 Getting Started
+Generate realistic layouts quickly.
 
-To get a local copy up and running, follow these simple steps.
+Provide insights through analytics dashboards.
 
-1.  **Clone the repo**
-    ```sh
-    git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-    ```
-2.  **Navigate to the project directory**
-    ```sh
-    cd YOUR_REPO
-    ```
-3.  **Install dependencies**
-    ```sh
-    flutter pub get
-    ```
-4.  **Run the app**
-    ```sh
-    flutter run
-    ```
+📸 Screenshots
 
-## 📜 License
+🖥️ Welcome & Login
 
-Distributed under the MIT License. See `LICENSE` for more information.
+📊 Main Visualization
+
+📈 Data & Analytics
+
+
+
+
+
+
+
+Modern animated login with Lottie effects.
+
+Interactive MST visualization of the layout.
+
+Insightful charts and data-driven analysis.
+
+✨ Key Features
+
+⚙️ Dynamic Layout Generation > Automatically creates randomized building layouts based on user input (floors & rooms).
+
+🔗 Optimal Path Calculation > Uses Kruskal’s Algorithm to form a Minimum Spanning Tree (MST) ensuring minimum total pipe length.
+
+🧭 Interactive Visualization > Zoomable and pannable graph canvas with detailed node data.
+
+📊 Rich Analytics Dashboard > Built-in charts show:
+
+Pipe length distribution
+
+Connection density per floor
+
+🎨 Modern UI/UX
+
+Smooth animations
+
+Lottie-based onboarding
+
+Light & Dark mode
+
+🔍 Advanced Filtering & Search
+
+Filter rooms by floor
+
+Highlight specific nodes dynamically
+
+🧠 Core Algorithm: Kruskal’s MST
+
+🧩 Concept Overview
+
+Each room is treated as a node; every potential pipe between two rooms is an edge.
+
+Edge weights are calculated based on distance, with penalties for vertical pipes.
+
+🔍 Steps of the Algorithm
+
+Generate all possible connections.
+
+Sort edges by distance (ascending).
+
+Use Disjoint Set Union (DSU) to avoid cycles.
+
+Select edges until (rooms - 1) connections are made.
+
+💡 Result: A perfectly connected network with minimal total pipe length.
+
+🛠️ Technology Stack
+
+Category
+
+Tools / Packages
+
+Framework
+
+Flutter
+
+Language
+
+Dart
+
+State Management
+
+StatefulWidget + Service-Oriented Architecture
+
+Charts & Analytics
+
+fl_chart
+
+Animations
+
+lottie, flutter_animate
+
+UI Enhancements
+
+google_fonts, flutter_spinkit
+
+📂 Project Structure
+
+📦 lib/
+ ┣ 📜 main.dart                   # App entry point, routes & themes
+ ┣ 📜 kruskal.dart                # Core MST algorithm & Disjoint Set
+ ┣ 📜 pipe_layout_screen.dart     # Layout + Data + Analytics tabs
+ ┣ 📜 modern_graph_visualization.dart # Interactive canvas visualization
+ ┣ 📜 room_and_connection_painter.dart # CustomPainter for drawing rooms & edges
+ ┣ 📜 welcome_screen.dart         # Lottie animations + onboarding
+ ┣ 📜 modern_login_screen.dart    # Animated login (frosted glass UI)
+ ┗ 📁 widgets/                    # Reusable UI components (MetricCard, etc.)
+
+
+🚀 Getting Started
+
+Follow these simple steps to set up locally 👇
+
+# 1️⃣ Clone the repository
+git clone [https://github.com/YOUR_USERNAME/smart_pipe_optimization.git](https://github.com/YOUR_USERNAME/smart_pipe_optimization.git)
+
+# 2️⃣ Navigate to the directory
+cd smart_pipe_optimization
+
+# 3️⃣ Install dependencies
+flutter pub get
+
+# 4️⃣ Run the app
+flutter run
+
+
+📘 Developer Notes
+
+🧩 Tips
+
+You can modify the distanceTo penalty function to simulate different material costs.
+
+Customize the UI theme via ThemeData in main.dart.
+
+Future updates may include 3D visualization and Firebase sync.
+
+📜 License
+
+Distributed under the MIT License.
+See the LICENSE file for details.
+
+<p align="center"> <sub>💙 Built with Flutter • Designed for Engineers • Powered by Algorithms</sub> </p>
