@@ -1,202 +1,168 @@
 <!-- =================================================================== -->
-
 <!-- 🚀 SMART PIPE OPTIMIZATION - PROFESSIONAL README -->
-
 <!-- =================================================================== -->
 
-<p align="center">
-<img src="assets/smart_pipe_banner.png" alt="Smart Pipe Optimization Banner" width="100%">
-</p>
+<div align="center">
 
-<h1 align="center">💧 Smart Pipe Optimization</h1>
-<p align="center">
-<em>A next-generation Flutter app that designs the most efficient pipe layout using Kruskal’s MST algorithm.</em>
-</p>
+![Smart Pipe Optimization Banner](assets/smart_pipe_banner.png)
 
-<p align="center">
-<a href="https://flutter.dev/"><img src="https://img.shields.io/badge/Framework-Flutter-blue?logo=flutter&logoColor=white" /></a>
-<a href="https://dart.dev/"><img src="https://img.shields.io/badge/Language-Dart-0175C2?logo=dart&logoColor=white" /></a>
-<a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" /></a>
-<a href="#"><img src="https://img.shields.io/badge/Version-1.0.0-purple" /></a>
-</p>
+# 💧 Smart Pipe Optimization
 
-🧭 Table of Contents
+**A next-generation Flutter app that designs the most efficient pipe layout using Kruskal’s MST algorithm.**
 
-📖 About The Project
+[![Flutter](https://img.shields.io/badge/Framework-Flutter-blue?logo=flutter&logoColor=white)](https://flutter.dev/)
+[![Dart](https://img.shields.io/badge/Language-Dart-0175C2?logo=dart&logoColor=white)](https://dart.dev/)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/Version-1.0.0-purple)](https://github.com/YOUR_USERNAME/smart_pipe_optimization/releases/tag/1.0.0)
+[![Dart SDK](https://img.shields.io/badge/Dart_SDK-3.0.0+-teal)](https://dart.dev/)
 
-📸 Screenshots
+</div>
 
-✨ Key Features
+---
 
-🧠 Core Algorithm: Kruskal's MST
+## 🧭 Table of Contents
 
-🛠️ Technology Stack
+- [📖 About The Project](#-about-the-project)
+- [✨ Key Features](#-key-features)
+- [🧠 Core Algorithm: Kruskal's MST](#-core-algorithm-kruskals-mst)
+- [🛠️ Technology Stack](#️-technology-stack)
+- [📂 Project Structure](#-project-structure)
+- [🚀 Getting Started](#-getting-started)
+- [📘 Developer Notes](#-developer-notes)
+- [📜 License](#-license)
 
-📂 Project Structure
+---
 
-🚀 Getting Started
+## 📖 About The Project
 
-📘 Developer Notes
+💡 **Smart Pipe Optimization** empowers engineers with a cutting-edge visual and algorithmic tool to craft the most efficient water or gas piping networks across multi-floor buildings. It generates realistic layouts, computes optimal paths, and delivers interactive visualizations for seamless design workflows.
 
-📜 License
+### 🧩 Key Goals
+- **Minimize Costs**: Slash material and construction expenses through optimized pipe routing.
+- **Accelerate Design**: Produce lifelike building layouts in seconds based on user specifications.
+- **Unlock Insights**: Dive deep into analytics with intuitive dashboards for data-driven decisions.
 
-📖 About The Project
+---
 
-💡 Smart Pipe Optimization provides engineers with a visual and algorithmic tool
+## ✨ Key Features
 
-to design the most efficient water or gas piping network across multiple floors.
+| Feature | Description |
+|---------|-------------|
+| **⚙️ Dynamic Layout Generation** | Auto-generates randomized multi-floor building layouts tailored to user-defined floors and rooms. |
+| **🔗 Optimal Path Calculation** | Leverages Kruskal’s Algorithm for Minimum Spanning Tree (MST) to minimize total pipe length. |
+| **🧭 Interactive Visualization** | Fully zoomable and pannable canvas with hover tooltips for node details and edge metrics. |
+| **📊 Rich Analytics Dashboard** | Embedded fl_chart visualizations including:<br>• Pipe length histograms<br>• Per-floor connection density heatmaps<br>• Cost estimation breakdowns |
+| **🎨 Modern UI/UX** | - Fluid animations via Lottie & flutter_animate<br>- Seamless light/dark mode toggle<br>- Responsive design for mobile & tablet |
+| **🔍 Advanced Filtering & Search** | - Filter rooms by floor or type<br>- Dynamic node highlighting<br>- Searchable connection logs |
 
-It simulates realistic layouts, calculates optimal paths, and visualizes the network interactively.
+---
 
-🧩 Key Goals
+## 🧠 Core Algorithm: Kruskal's MST
 
-Reduce material and construction costs.
+### 🧩 Concept Overview
+In this system, each room acts as a **node**, and potential pipes between rooms form **weighted edges**. Weights incorporate Euclidean distances with vertical penalties to mimic real-world plumbing challenges.
 
-Generate realistic layouts quickly.
+### 🔍 Algorithm Steps
+1. **Generate Edges**: Compute all pairwise connections between nodes with distance-based weights.  
+2. **Sort by Weight**: Arrange edges in ascending order of cost (shortest first).  
+3. **Union-Find (DSU)**: Employ Disjoint Set Union to detect and prevent cycles during edge selection.  
+4. **Build MST**: Add edges iteratively until exactly `(n-1)` connections link all `n` nodes.
 
-Provide insights through analytics dashboards.
+### 💡 Outcome
+A fully connected, cycle-free network with the **absolute minimum pipe length** – proven optimal for cost efficiency!
 
-📸 Screenshots
+> 🔗 **Deep Dive**: Check `lib/kruskal.dart` for the full implementation with customizable penalties.
 
-🖥️ Welcome & Login
+---
 
-📊 Main Visualization
+## 🛠️ Technology Stack
 
-📈 Data & Analytics
+| Category | Tools / Packages |
+|----------|------------------|
+| **Framework** | Flutter 3.24+ |
+| **Language** | Dart 3.0+ |
+| **State Management** | StatefulWidget + Provider for reactive services |
+| **Charts & Analytics** | [fl_chart](https://pub.dev/packages/fl_chart) for dynamic visualizations |
+| **Animations** | [lottie](https://pub.dev/packages/lottie), [flutter_animate](https://pub.dev/packages/flutter_animate) |
+| **UI Enhancements** | [google_fonts](https://pub.dev/packages/google_fonts), [flutter_spinkit](https://pub.dev/packages/flutter_spinkit) |
+| **Graph Rendering** | CustomPainter with Canvas for performant node/edge drawing |
+| **Utilities** | [equatable](https://pub.dev/packages/equatable) for immutable models |
 
+---
 
+## 📂 Project Structure
 
-
-
-
-
-Modern animated login with Lottie effects.
-
-Interactive MST visualization of the layout.
-
-Insightful charts and data-driven analysis.
-
-✨ Key Features
-
-⚙️ Dynamic Layout Generation > Automatically creates randomized building layouts based on user input (floors & rooms).
-
-🔗 Optimal Path Calculation > Uses Kruskal’s Algorithm to form a Minimum Spanning Tree (MST) ensuring minimum total pipe length.
-
-🧭 Interactive Visualization > Zoomable and pannable graph canvas with detailed node data.
-
-📊 Rich Analytics Dashboard > Built-in charts show:
-
-Pipe length distribution
-
-Connection density per floor
-
-🎨 Modern UI/UX
-
-Smooth animations
-
-Lottie-based onboarding
-
-Light & Dark mode
-
-🔍 Advanced Filtering & Search
-
-Filter rooms by floor
-
-Highlight specific nodes dynamically
-
-🧠 Core Algorithm: Kruskal’s MST
-
-🧩 Concept Overview
-
-Each room is treated as a node; every potential pipe between two rooms is an edge.
-
-Edge weights are calculated based on distance, with penalties for vertical pipes.
-
-🔍 Steps of the Algorithm
-
-Generate all possible connections.
-
-Sort edges by distance (ascending).
-
-Use Disjoint Set Union (DSU) to avoid cycles.
-
-Select edges until (rooms - 1) connections are made.
-
-💡 Result: A perfectly connected network with minimal total pipe length.
-
-🛠️ Technology Stack
-
-Category
-
-Tools / Packages
-
-Framework
-
-Flutter
-
-Language
-
-Dart
-
-State Management
-
-StatefulWidget + Service-Oriented Architecture
-
-Charts & Analytics
-
-fl_chart
-
-Animations
-
-lottie, flutter_animate
-
-UI Enhancements
-
-google_fonts, flutter_spinkit
-
-📂 Project Structure
-
+```bash
 📦 lib/
- ┣ 📜 main.dart                   # App entry point, routes & themes
- ┣ 📜 kruskal.dart                # Core MST algorithm & Disjoint Set
- ┣ 📜 pipe_layout_screen.dart     # Layout + Data + Analytics tabs
- ┣ 📜 modern_graph_visualization.dart # Interactive canvas visualization
- ┣ 📜 room_and_connection_painter.dart # CustomPainter for drawing rooms & edges
- ┣ 📜 welcome_screen.dart         # Lottie animations + onboarding
- ┣ 📜 modern_login_screen.dart    # Animated login (frosted glass UI)
- ┗ 📁 widgets/                    # Reusable UI components (MetricCard, etc.)
+┣ 📜 main.dart # App bootstrap: themes, routes, and providers
+┣ 📜 kruskal.dart # Kruskal's MST core + DSU implementation
+┣ 📜 pipe_layout_screen.dart # Tabbed interface: Layout | Data | Analytics
+┣ 📜 modern_graph_visualization.dart # GestureDetector-wrapped CustomPainter canvas
+┣ 📜 room_and_connection_painter.dart # Draws rooms (rects), edges (lines), & labels
+┣ 📜 welcome_screen.dart # Lottie-animated onboarding carousel
+┣ 📜 modern_login_screen.dart # Frosted glass auth with form validation
+┗ 📁 widgets/
+   ┣ 📜 metric_card.dart # Reusable stat cards for dashboards
+   ┣ 📜 filter_chip.dart # Customizable floor/room filters
+   ┗ 📜 animated_button.dart # Ripple + scale effects for CTAs
+```
 
+---
 
-🚀 Getting Started
+## 🚀 Getting Started
 
-Follow these simple steps to set up locally 👇
+Ready to pipe up your dev environment? Follow these steps:
 
-# 1️⃣ Clone the repository
-git clone [https://github.com/YOUR_USERNAME/smart_pipe_optimization.git](https://github.com/YOUR_USERNAME/smart_pipe_optimization.git)
+### 1️⃣ Clone the Repo
+```bash
+git clone https://github.com/YOUR_USERNAME/smart_pipe_optimization.git
+```
 
-# 2️⃣ Navigate to the directory
+### 2️⃣ Navigate & Prep
+```bash
 cd smart_pipe_optimization
-
-# 3️⃣ Install dependencies
 flutter pub get
+```
 
-# 4️⃣ Run the app
+### 3️⃣ Launch the App
+```bash
 flutter run
+```
 
+---
 
-📘 Developer Notes
+⚠️ **Requirements:**  
+Flutter SDK ≥ **3.24**, Dart ≥ **3.0**.  
+Ensure your emulator/device is properly connected.
 
-🧩 Tips
+---
 
-You can modify the distanceTo penalty function to simulate different material costs.
+📘 **Developer Notes**
 
-Customize the UI theme via ThemeData in main.dart.
+🧩 **Quick Tips**
+- **Tweak Penalties:** Edit `distanceTo()` in `kruskal.dart` to include material-specific costs (e.g., copper vs. PVC).  
+- **Theme Customization:** Override `ThemeData` in `main.dart` for brand-aligned colors.  
+- **Extensibility:** Roadmap includes 3D extrusion views (via `three_dart`) and cloud sync (Firebase).
 
-Future updates may include 3D visualization and Firebase sync.
+---
 
-📜 License
+🔧 **Contributing**  
+Fork the repo, create a branch (`feat/your-feature`), and open a PR with tests.  
+See **CONTRIBUTING.md** for guidelines.
 
-Distributed under the MIT License.
-See the LICENSE file for details.
+---
 
-<p align="center"> <sub>💙 Built with Flutter • Designed for Engineers • Powered by Algorithms</sub> </p>
+🐛 **Issues?**  
+Report bugs or suggest new features via the **Issues** section.
+
+---
+
+📜 **License**  
+This project is distributed under the **MIT License**.  
+Free to use, modify, and distribute – credit appreciated! 🚀
+
+---
+
+<div align="center">
+  <sub>💙 Built with ❤️ using Flutter • Engineered for Precision • Algorithm-Powered Innovation</sub>
+</div>
