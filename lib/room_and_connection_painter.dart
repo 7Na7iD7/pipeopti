@@ -116,7 +116,7 @@ class RoomAndConnectionPainter extends CustomPainter {
     final linePaint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
-      ..strokeWidth = (isDetailedView ? 4.0 : 3.5) * animationValue.clamp(0.1, 1.0); //
+      ..strokeWidth = (isDetailedView ? 4.0 : 3.5) * animationValue.clamp(0.1, 1.0); 
 
     for (var connection in connections) {
       final fromPos = _getCanvasPosition(connection.from);
@@ -127,9 +127,9 @@ class RoomAndConnectionPainter extends CustomPainter {
 
       linePaint.shader = LinearGradient(
         colors: [
-          startColor.withOpacity(0.85 * animationValue), //
-          endColor.withOpacity(0.85 * animationValue), //
-          startColor.withOpacity(0.4 * animationValue), //
+          startColor.withOpacity(0.85 * animationValue), 
+          endColor.withOpacity(0.85 * animationValue), 
+          startColor.withOpacity(0.4 * animationValue), 
         ],
         stops: const [0.0, 0.6, 1.0], //
       ).createShader(Rect.fromPoints(fromPos, toPos));
@@ -141,24 +141,24 @@ class RoomAndConnectionPainter extends CustomPainter {
       if (animatedPath.computeMetrics().isNotEmpty) {
         canvas.drawShadow(
           animatedPath,
-          Colors.black.withOpacity(0.35 * animationValue), //
-          (isDetailedView ? 5.0 : 4.0) * animationValue, //
+          Colors.black.withOpacity(0.35 * animationValue), 
+          (isDetailedView ? 5.0 : 4.0) * animationValue, 
           false,
         );
         canvas.drawPath(animatedPath, linePaint);
       }
 
-      if (isDetailedView && animationValue > 0.9) { //
+      if (isDetailedView && animationValue > 0.9) { 
         final midPoint = Offset((fromPos.dx + toPos.dx) / 2, (fromPos.dy + toPos.dy) / 2);
         _drawAnimatedText(
           canvas,
-          '${connection.distance.toStringAsFixed(1)} u', //
+          '${connection.distance.toStringAsFixed(1)} u', 
           midPoint,
-          fontSize: (9.0 + _effectiveScale * 0.5).clamp(8.0, 14.0), //
-          color: isDarkMode ? Colors.white.withOpacity(0.8) : Colors.black.withOpacity(0.8), //
+          fontSize: (9.0 + _effectiveScale * 0.5).clamp(8.0, 14.0), 
+          color: isDarkMode ? Colors.white.withOpacity(0.8) : Colors.black.withOpacity(0.8), 
           backgroundColor: isDarkMode
-              ? Colors.black.withOpacity(0.6) //
-              : Colors.white.withOpacity(0.75), //
+              ? Colors.black.withOpacity(0.6) 
+              : Colors.white.withOpacity(0.75), 
         );
       }
     }
