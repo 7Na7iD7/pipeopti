@@ -95,10 +95,6 @@ A fully connected, cycle-free network with the **absolute minimum pipe length** 
 ┣ 📜 room_and_connection_painter.dart # Draws rooms (rects), edges (lines), & labels
 ┣ 📜 welcome_screen.dart # Lottie-animated onboarding carousel
 ┣ 📜 modern_login_screen.dart # Frosted glass auth with form validation
-┗ 📁 widgets/
-   ┣ 📜 metric_card.dart # Reusable stat cards for dashboards
-   ┣ 📜 filter_chip.dart # Customizable floor/room filters
-   ┗ 📜 animated_button.dart # Ripple + scale effects for CTAs
 ```
 
 ---
